@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
+import useSearchHistory from './data/useSearchHistory'
+import fetchNumberInfo from './data/fetchNumberInfo'
 import PhoneNumberSearch from './PhoneNumberSearch'
 import PhoneNumberDetails from './PhoneNumberDetails'
 
@@ -16,11 +18,30 @@ const Header = styled.h1`
 `
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState()
+  const { searchHistory, addSearch } = useSearchHistory()
+
+  const onSubmit = async (number) => {
+    setIsLoading(true)
+    const data = await fetchNumberInfo(number)
+
+    if (data.phone_valid) {
+      addSearch(data)
+      setError()
+    } else {
+      setError('The phone number is not valid')
+    }
+    setIsLoading(false)
+    console.log(data)
+  }
+
   return (
     <Container>
+      {error && <p>{error}</p>}
       <Header>Phone Number Search</Header>
-      <PhoneNumberSearch onSubmit={console.log} />
-      <PhoneNumberDetails />
+      <PhoneNumberSearch onSubmit={onSubmit} loading={isLoading} />
+      <PhoneNumberDetails phoneNumbers={searchHistory} />
     </Container>
   )
 }

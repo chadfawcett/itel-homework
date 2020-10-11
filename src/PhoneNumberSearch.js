@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Button } from '@material-ui/core'
+import { Button, CircularProgress } from '@material-ui/core'
 import { Search as SearchIcon } from '@material-ui/icons'
 import styled from 'styled-components'
 import PhoneInput from 'react-phone-input-2'
@@ -44,7 +44,10 @@ const PhoneNumberSearch = (props) => {
         variant="outlined"
         color="primary"
         size="large"
-        startIcon={<SearchIcon />}>
+        disabled={props.loading}
+        startIcon={
+          props.loading ? <CircularProgress size={22} /> : <SearchIcon />
+        }>
         Search
       </Button>
     </Form>
@@ -52,7 +55,12 @@ const PhoneNumberSearch = (props) => {
 }
 
 PhoneNumberSearch.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool
+}
+
+PhoneNumberSearch.defaultProps = {
+  loading: false
 }
 
 export default PhoneNumberSearch

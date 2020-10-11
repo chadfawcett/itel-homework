@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {
   Table,
@@ -14,7 +15,7 @@ const Container = styled.div`
   margin-top: 4rem;
 `
 
-const PhoneNumberDetails = () => (
+const PhoneNumberDetails = ({ phoneNumbers }) => (
   <Container>
     <h2>Results</h2>
     <TableContainer component={Paper}>
@@ -27,20 +28,27 @@ const PhoneNumberDetails = () => (
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell>+1 250 574 0456</TableCell>
-            <TableCell align="right">British Columbia</TableCell>
-            <TableCell align="right">Canada</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>+49 1512 3577723</TableCell>
-            <TableCell align="right">Germany</TableCell>
-            <TableCell align="right">Germany</TableCell>
-          </TableRow>
+          {phoneNumbers.map((numberInfo, index) => (
+            <TableRow key={`${numberInfo.international_number}${index}`}>
+              <TableCell>{numberInfo.international_number}</TableCell>
+              <TableCell align="right">{numberInfo.phone_region}</TableCell>
+              <TableCell align="right">{numberInfo.country}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
   </Container>
 )
+
+PhoneNumberDetails.propTypes = {
+  phoneNumbers: PropTypes.arrayOf(
+    PropTypes.shape({
+      international_number: PropTypes.string.isRequired,
+      phone_region: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired
+    })
+  )
+}
 
 export default PhoneNumberDetails
