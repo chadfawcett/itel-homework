@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import PhoneNumberSearch from './PhoneNumberSearch'
+import PhoneNumberDetails from './PhoneNumberDetails'
 
 const Container = styled.div`
   width: 100%;
@@ -15,10 +16,13 @@ const Header = styled.h1`
 `
 
 function App() {
+  const [searchVal, setSearchVal] = useState()
+
   return (
     <Container>
       <Header>Phone Number Search</Header>
-      <PhoneNumberSearch onSubmit={console.log} />
+      <PhoneNumberSearch onSubmit={(num) => setSearchVal(num)} />
+      {searchVal && <PhoneNumberDetails phoneNumber={searchVal} />}
     </Container>
   )
 }
