@@ -25,6 +25,19 @@ function App() {
 
   const onSubmit = async (number) => {
     setIsLoading(true)
+
+    /**
+     * If we have already searched for this number, there is no need to request
+     * the info again
+     */
+    const prevInfo = searchHistory.find(({ phone }) => phone === `+${number}`)
+    if (prevInfo) {
+      addSearch(prevInfo)
+      setError()
+      setIsLoading(false)
+      return
+    }
+
     const data = await fetchNumberInfo(number)
 
     if (data.phone_valid) {
