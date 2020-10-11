@@ -2,8 +2,8 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import App from './App'
 
-test('renders learn react link', () => {
+test('App renders successfully', () => {
   const { getByText } = render(<App />)
-  const text = getByText('hello')
-  expect(text).toBeInTheDocument()
+  const header = getByText('Phone Number Search')
+  expect(header).toBeInTheDocument()
 })
