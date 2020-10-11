@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Alert } from '@material-ui/lab'
 
 import useSearchHistory from './data/useSearchHistory'
 import fetchNumberInfo from './data/fetchNumberInfo'
@@ -30,7 +31,7 @@ function App() {
       addSearch(data)
       setError()
     } else {
-      setError('The phone number is not valid')
+      setError('That phone number is not valid')
     }
     setIsLoading(false)
     console.log(data)
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <Container>
-      {error && <p>{error}</p>}
+      {error && <Alert severity="error">{error}</Alert>}
       <Header>Phone Number Search</Header>
       <PhoneNumberSearch onSubmit={onSubmit} loading={isLoading} />
       <PhoneNumberDetails phoneNumbers={searchHistory} />
