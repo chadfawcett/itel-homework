@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import PhoneNumberSearch from './PhoneNumberSearch'
@@ -16,13 +16,11 @@ const Header = styled.h1`
 `
 
 function App() {
-  const [searchVal, setSearchVal] = useState()
-
   return (
     <Container>
       <Header>Phone Number Search</Header>
-      <PhoneNumberSearch onSubmit={(num) => setSearchVal(num)} />
-      {searchVal && <PhoneNumberDetails phoneNumber={searchVal} />}
+      <PhoneNumberSearch onSubmit={console.log} />
+      <PhoneNumberDetails />
     </Container>
   )
 }
