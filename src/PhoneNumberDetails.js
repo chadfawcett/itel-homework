@@ -22,6 +22,10 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
 `
 
+const CenterMessage = styled.p`
+  text-align: center;
+`
+
 const PhoneNumberDetails = ({ phoneNumbers, onClear }) => (
   <Container>
     <HeaderContainer>
@@ -48,6 +52,11 @@ const PhoneNumberDetails = ({ phoneNumbers, onClear }) => (
           ))}
         </TableBody>
       </Table>
+      {!phoneNumbers.length && (
+        <CenterMessage>
+          Search phone numbers above and they will appear in this table
+        </CenterMessage>
+      )}
     </TableContainer>
   </Container>
 )
