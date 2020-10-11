@@ -34,7 +34,6 @@ function App() {
       setError('That phone number is not valid')
     }
     setIsLoading(false)
-    console.log(data)
   }
 
   return (
