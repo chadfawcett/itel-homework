@@ -17,5 +17,10 @@ export default () => {
     localStorage.setItem('searchHistory', JSON.stringify(newHistory))
   }
 
-  return { searchHistory, addSearch }
+  const clearHistory = () => {
+    setSearchHistory([])
+    localStorage.removeItem('searchHistory')
+  }
+
+  return { searchHistory, addSearch, clearHistory }
 }

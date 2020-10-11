@@ -21,7 +21,7 @@ const Header = styled.h1`
 function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState()
-  const { searchHistory, addSearch } = useSearchHistory()
+  const { searchHistory, addSearch, clearHistory } = useSearchHistory()
 
   const onSubmit = async (number) => {
     setIsLoading(true)
@@ -41,7 +41,7 @@ function App() {
       {error && <Alert severity="error">{error}</Alert>}
       <Header>Phone Number Search</Header>
       <PhoneNumberSearch onSubmit={onSubmit} loading={isLoading} />
-      <PhoneNumberDetails phoneNumbers={searchHistory} />
+      <PhoneNumberDetails phoneNumbers={searchHistory} onClear={clearHistory} />
     </Container>
   )
 }

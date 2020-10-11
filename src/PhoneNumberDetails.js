@@ -8,16 +8,27 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper
+  Paper,
+  Button
 } from '@material-ui/core'
 
 const Container = styled.div`
   margin-top: 4rem;
 `
 
-const PhoneNumberDetails = ({ phoneNumbers }) => (
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const PhoneNumberDetails = ({ phoneNumbers, onClear }) => (
   <Container>
-    <h2>Results</h2>
+    <HeaderContainer>
+      <h2>Results</h2>
+      <Button onClick={onClear}>Clear</Button>
+    </HeaderContainer>
+
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
@@ -48,7 +59,8 @@ PhoneNumberDetails.propTypes = {
       phone_region: PropTypes.string.isRequired,
       country: PropTypes.string.isRequired
     })
-  )
+  ),
+  onClear: PropTypes.func.isRequired
 }
 
 export default PhoneNumberDetails
