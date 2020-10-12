@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Environment Variables
+
+### `REACT_APP_VERIPHONE_KEY`
+
+This is the API key provided by RapidAPI.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -8,6 +14,13 @@ In the project directory, you can run:
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+You'll need to provide your RapidAPI key using the environment variable
+mentioned above.
+
+```bash
+REACT_APP_VERIPHONE_KEY=<your-api-key> npm start
+```
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
