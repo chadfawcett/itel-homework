@@ -9,10 +9,21 @@ import 'react-phone-input-2/lib/material.css'
 const Form = styled.form`
   display: flex;
   justify-content: center;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
 `
 
 const InputContainer = styled.div`
   margin-right: 0.5em;
+
+  @media (max-width: 600px) {
+    margin: 0;
+    margin-bottom: 0.5em;
+  }
 `
 
 const PhoneNumberSearch = (props) => {

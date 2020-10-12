@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core'
 
 const Container = styled.div`
-  margin-top: 4rem;
+  margin: 4rem 2rem;
 `
 
 const HeaderContainer = styled.div`
