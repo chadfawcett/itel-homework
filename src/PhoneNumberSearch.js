@@ -36,7 +36,6 @@ const PhoneNumberSearch = (props) => {
           value={phoneValue}
           onChange={setPhoneValue}
           onKeyDown={onKeyDown}
-          inputProps={{ autoFocus: true }}
         />
       </InputContainer>
       <Button
